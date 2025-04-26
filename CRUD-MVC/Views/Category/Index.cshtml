@@ -1,0 +1,45 @@
+﻿@model List<Category>
+<h1>Lista de Categorias</h1>
+<div class="container">
+    <div class="col-6 ">
+        <h2 class="text-primary">
+        Lista de categoria          
+        </h2>
+    </div>
+    <div class="col-6 text-end">
+        <a asp-controller="Category" asp-action="Create" class="btn btn-primary"> <i class="bi bi-database-fill-add"></i>Crear nueva categoria</a>
+    </div>
+
+    <table class="table table-bordered">
+    <tr>
+
+        <th>
+             categoria de pizza 
+        </th>
+        <th>
+            Precio
+        </th>
+
+    </tr>
+    <tbody>
+       @foreach(var obj in Model.OrderBy(u=>u.Price))
+        {
+            <tr>
+                <td>@obj.Name
+                </td>
+                <td>@obj.Price
+                </td>
+                <td>
+                    <div class="w-100 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Edit" class="btn btn-primary mx-2" href="#"><i class="bi bi-pencil"></i> Editar</a>
+                            <a asp-controller="Category" asp-action="Delete"  class="btn btn-primary mx-2"><i class="bi bi-trash"></i>Eliminar</a>
+                    </div> 
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+</div>
